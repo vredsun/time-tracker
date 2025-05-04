@@ -5,4 +5,7 @@
 ## Roadmap
 
 - [x] RFC
-- [ ] ...
+- [x] Main workflow
+- [ ] Save notification
+- [ ] Export to csv
+- [ ] Review from the customer
