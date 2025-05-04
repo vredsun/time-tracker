@@ -1,6 +1,8 @@
 # Timetracker
 
+<https://vredsun.github.io/time-traker/>
+
 ## Roadmap
 
-- [ ] RFC
+- [x] RFC
 - [ ] ...
