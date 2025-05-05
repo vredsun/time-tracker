@@ -24,11 +24,14 @@ const AppContainer = React.memo(() => {
 
           <div style={{ flex: '1', overflow: 'auto' }}>
             <ActivitiesList />
+            {/* <div style={{ position: 'sticky', bottom: '0px', background: 'linear-gradient(0, white, transparent)' }}> */}
+            <div style={{ position: 'sticky', bottom: '0px', background: 'linear-gradient(0, #ffffff, #ffffffcc 75%, transparent)' }}>
+              <Footer />
+            </div>
           </div>
         </div>
 
         <div style={{ display: 'flex',  }}>
-          <Footer />
         </div>
       </div>
     </div>
