@@ -6,6 +6,6 @@
 
 - [x] RFC
 - [x] Main workflow
-- [ ] Save notification
+- [x] Save notification
 - [ ] Export to csv
 - [ ] Review from the customer
