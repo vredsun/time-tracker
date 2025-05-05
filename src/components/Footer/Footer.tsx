@@ -72,7 +72,7 @@ export const Footer = React.memo<Props>(({ onFocusActivityNamePicker }) => {
 
   return (
     <div style={{ flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', padding: '24px 0 24px' }}>
-      <div style={{ fontSize: '48px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', padding: '24px 0 48px'}} onClick={handleClick}>
+      <div style={{ fontSize: '48px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', padding: '24px 0 48px', cursor: 'pointer'}} onClick={handleClick}>
         <div style={{
             background: 'rgb(0 0 0 / 5%)',
             borderRadius: '44px',

@@ -35,7 +35,7 @@ export const LoadCsvButton: React.FC = React.memo(
 
     return (
       <div style={{ position: 'absolute', right: 0, top: 0}}>
-        <div style={{ padding: '12px 24px 12px 24px'}} onClick={handleLoadCsv}>
+        <div style={{ padding: '12px 24px 12px 24px', cursor: 'pointer'}} onClick={handleLoadCsv}>
           <BsFiletypeCsv size={32} />
         </div>
       </div>

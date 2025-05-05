@@ -28,7 +28,7 @@ export const ActivityNamePicker = React.memo<Props>(({ ref: forwardedRef }) => {
   useImperativeHandle(forwardedRef, () => ({
     focus() {
       ref.current?.openMenu('first');
-      ref.current?.focus();
+      ref.current?.focusInput();
     }
   }), [])
   
