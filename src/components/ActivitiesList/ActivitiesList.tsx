@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getHHMMSSfromSeconds } from "~components/TimerTitle/utils";
 import { selectActivitiesByDate } from "~modules/activities-record/selectors";
 
-export const ActivitiesList: React.FC = React.memo(
+export const ActivitiesList = React.memo(
   () => {
     const activitiesByDate = useSelector(selectActivitiesByDate);
 

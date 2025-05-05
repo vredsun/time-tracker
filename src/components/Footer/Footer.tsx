@@ -7,7 +7,11 @@ import { useAppDispatch } from "~modules/configureStore";
 import { finishActivity, resetCurrentActivity, startActivity } from "~modules/current-activity/reducer";
 import { selectCurrentActivityEndTime, selectCurrentActivityName, selectCurrentActivityStartTime, selectCurrentActivityStatus } from "~modules/current-activity/selectors";
 
-export const Footer: React.FC = React.memo(() => {
+type Props = {
+  onFocusActivityNamePicker: () => void;
+}
+
+export const Footer = React.memo<Props>(({ onFocusActivityNamePicker }) => {
   const currentActivityStatus = useSelector(selectCurrentActivityStatus);
   const name = useSelector(selectCurrentActivityName);
   const startTime = useSelector(selectCurrentActivityStartTime);
@@ -27,6 +31,7 @@ export const Footer: React.FC = React.memo(() => {
       }
       case 'finished': {
         if (!name) {
+          onFocusActivityNamePicker();
           return;
         }
 
@@ -45,7 +50,7 @@ export const Footer: React.FC = React.memo(() => {
             position: 'bottom-center',
             theme: 'colored',
             closeButton: false,
-            autoClose: 2000,
+            autoClose: 2_000,
             transition: Slide,
             hideProgressBar: true,
             progress: undefined,
@@ -66,19 +71,27 @@ export const Footer: React.FC = React.memo(() => {
   }
 
   return (
-    <div style={{ flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', padding: '24px 0' }}>
-      <div style={{ height: '80px', fontSize: '48px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', padding: '24px 0 48px'}} onClick={handleClick}>
-        {
-          currentActivityStatus === 'notStarted' && <IoIosPlay size={64} />
-        }
-        {
-          currentActivityStatus === 'tracked' && <IoMdSquare size={64} />
-        }
-        {
-          currentActivityStatus === 'finished' && (
-            <div style={{ opacity: !name ? 0.5 : 1, color: !name ? 'red' : 'black' }}>Save</div>
-          )
-        }
+    <div style={{ flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', padding: '24px 0 24px' }}>
+      <div style={{ fontSize: '48px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', padding: '24px 0 48px'}} onClick={handleClick}>
+        <div style={{
+            background: 'rgb(0 0 0 / 5%)',
+            borderRadius: '44px',
+            height: '88px',
+            width: '200px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}>
+          {
+            currentActivityStatus === 'notStarted' && <IoIosPlay size={64} style={{ transform: 'translateX(4px)' }} />
+          }
+          {
+            currentActivityStatus === 'tracked' && <IoMdSquare size={64}/>
+          }
+          {
+            currentActivityStatus === 'finished' && 'Save'
+          }
+        </div>
       </div>
     </div>
   )
