@@ -29,13 +29,13 @@ export const activitiesRecordSlice = createSlice({
       }
 
       state.byDate[date] = [...state.byDate[date], activity];
-      
-      const activitiesList = new Set([...state.activitiesList, activity.name]);
-      state.activitiesList = [...activitiesList];
+    },
+    addActivityName: (state, action: PayloadAction<string>) => {
+      state.activitiesList.push(action.payload);
     },
   },
 })
 
-export const { addActivityRecord } = activitiesRecordSlice.actions
+export const { addActivityRecord, addActivityName } = activitiesRecordSlice.actions
 
 export default activitiesRecordSlice.reducer

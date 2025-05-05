@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CreatableSelect from 'react-select/creatable';
+import { addActivityName } from "~modules/activities-record/reducer";
 import { selectActivitiesList } from "~modules/activities-record/selectors";
 import { useAppDispatch } from "~modules/configureStore";
 import { setActivityName } from "~modules/current-activity/reducer";
@@ -12,7 +13,6 @@ type Option = {
 }
 
 export const ActivityNamePicker: React.FC = React.memo(() => {
-  const [createdOptions, changeCreatedOptions] = React.useState<Array<Option>>([])
   const currentActivityStatus = useSelector(selectCurrentActivityStatus);
   const currentActivityName = useSelector(selectCurrentActivityName);
   const activitiesList = useSelector(selectActivitiesList);
@@ -20,7 +20,7 @@ export const ActivityNamePicker: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
 
   const handleCreateOption = (name: string) => {
-    changeCreatedOptions(oldOptions => [...oldOptions, { value: name, label: name }])
+    dispatch(addActivityName(name));
     changeInputActivityName(name);
   }
 
@@ -28,24 +28,12 @@ export const ActivityNamePicker: React.FC = React.memo(() => {
     dispatch(setActivityName(name));
   }
 
-  const defaultOptions = React.useMemo(
+  const options = React.useMemo(
     () => {
       return activitiesList.map((activityName): Option => ({ value: activityName, label: activityName }))
     },
     [activitiesList],
   );
-
-  const options = React.useMemo(
-    () => {
-      return [
-        ...createdOptions,
-        ...defaultOptions,
-      ]
-    },
-    [currentActivityName, defaultOptions]
-  );
-  
-  console.log({ currentActivityName, })
 
   return (
     <div style={{ margin: '24px 0'}}>

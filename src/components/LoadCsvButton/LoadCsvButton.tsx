@@ -10,7 +10,7 @@ export const LoadCsvButton: React.FC = React.memo(
     const activitiesByDate = useSelector(selectActivitiesByDate);
     
     const handleLoadCsv = () => {
-      let csvContent = "data:text/csv;charset=utf-8,";
+      let csvContent = "data:text/csv;";
 
       Object.entries(activitiesByDate).forEach(([day, activities]) => {
         activities.forEach(activity => {
