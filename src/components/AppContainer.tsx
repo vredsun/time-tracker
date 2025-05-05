@@ -3,12 +3,14 @@ import React from "react";
 import { ActivitiesList } from "./ActivitiesList/ActivitiesList";
 import { ActivityNamePicker } from "./ActivityNamePicker/ActivityNamePicker";
 import { Footer } from "./Footer/Footer";
+import { LoadCsvButton } from "./LoadCsvButton/LoadCsvButton";
 import { TimerTitle } from "./TimerTitle/TimerTitle";
 
 
 const AppContainer = React.memo(() => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
+      <LoadCsvButton />
       <div style={{ display: 'flex', flex: '1', flexDirection: 'column', overflow: 'hidden' }}>
         <TimerTitle />
 
