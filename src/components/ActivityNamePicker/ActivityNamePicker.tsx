@@ -48,7 +48,7 @@ export const ActivityNamePicker: React.FC = React.memo(() => {
   console.log({ currentActivityName, })
 
   return (
-    <div style={{ padding: '48px 0'}}>
+    <div style={{ margin: '48px 0 24px'}}>
       <CreatableSelect<Option>
         isSearchable
         isClearable={false}
