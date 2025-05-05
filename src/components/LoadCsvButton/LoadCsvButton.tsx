@@ -1,3 +1,4 @@
+import isEmpty from "lodash/isEmpty";
 import React from "react";
 import { BsFiletypeCsv } from "react-icons/bs";
 import { useSelector } from "react-redux";
@@ -28,6 +29,9 @@ export const LoadCsvButton: React.FC = React.memo(
       document.body.removeChild(link);
     }
 
+    if (isEmpty(activitiesByDate)) {
+      return null;
+    }
 
     return (
       <div style={{ position: 'absolute', right: 0, top: 0}}>
