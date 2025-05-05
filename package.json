@@ -1,6 +1,6 @@
 {
   "name": "game-of-life",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "private": true,
   "description": "",
   "main": "./dist/client/index.js",
@@ -28,6 +28,7 @@
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
     "react-select": "^5.10.1",
+    "react-toastify": "^11.0.5",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.17",

@@ -1,6 +1,7 @@
 import React from "react";
 import { IoIosPlay, IoMdSquare } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { Slide, toast } from 'react-toastify';
 import { addActivityRecord, DayKey } from "~modules/activities-record/reducer";
 import { useAppDispatch } from "~modules/configureStore";
 import { finishActivity, resetCurrentActivity, startActivity } from "~modules/current-activity/reducer";
@@ -40,9 +41,18 @@ export const Footer: React.FC = React.memo(() => {
               name,
             }
           }))
+          toast.success('Activity saved', {
+            position: 'bottom-center',
+            theme: 'colored',
+            closeButton: false,
+            autoClose: 2000,
+            transition: Slide,
+            hideProgressBar: true,
+            progress: undefined,
+          })
+          dispatch(resetCurrentActivity());
         }
 
-        dispatch(resetCurrentActivity());
         return;
       }
 
