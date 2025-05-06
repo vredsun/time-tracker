@@ -10,18 +10,29 @@ export const LoadCsvButton: React.FC = React.memo(
     const activitiesByDate = useSelector(selectActivitiesByDate);
     
     const handleLoadCsv = () => {
-      let csvContent = "data:text/csv;";
+
+      const data: Array<string>= []
 
       Object.entries(activitiesByDate).forEach(([day, activities]) => {
         activities.forEach(activity => {
-          csvContent = `${csvContent}${day},${activity.name},${new Date(activity.startTime).toISOString()},${new Date(activity.endTime).toISOString()}\n`;
+          data.push(
+            [
+              day,
+              activity.name,
+              Math.floor((activity.endTime - activity.startTime) / 1000 / 60),
+              new Date(activity.startTime).toISOString(),
+              new Date(activity.endTime).toISOString(),
+            ].join(',')
+          )
         })
       })
 
-      const encodedUri = encodeURI(csvContent);
+      const blob = new Blob(['\uFEFF' + data.join('\n')], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+
       const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "my_data.csv");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "time_tracker.csv");
       document.body.appendChild(link); // Required for FF
 
       link.click();
