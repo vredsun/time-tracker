@@ -80,6 +80,7 @@ const config: webpack.Configuration = {
   resolve: {
     alias: {
       '~components': path.join(DIR_APP_SRC, 'components'),
+      '~lib': path.join(DIR_APP_SRC, 'lib'),
       '~modules': path.join(DIR_APP_SRC, 'modules'),
       '~ui': path.join(DIR_APP_SRC, 'ui'),
       '~styles': path.join(DIR_APP_SRC, 'styles'),

@@ -2,6 +2,7 @@ import React from "react";
 import { IoIosPlay, IoMdSquare } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { Slide, toast } from 'react-toastify';
+import { getDate } from "~lib/datetime";
 import { addActivityRecord, DayKey } from "~modules/activities-record/reducer";
 import { useAppDispatch } from "~modules/configureStore";
 import { finishActivity, resetCurrentActivity, startActivity } from "~modules/current-activity/reducer";
@@ -36,7 +37,7 @@ export const Footer = React.memo<Props>(({ onFocusActivityNamePicker }) => {
         }
 
         if (startTime && endTime) {
-          const date: DayKey = (new Date(startTime)).toISOString().split('T')[0];
+          const date: DayKey = getDate(startTime);
 
           dispatch(addActivityRecord({
             date,
