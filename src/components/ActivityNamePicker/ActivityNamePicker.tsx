@@ -58,7 +58,7 @@ export const ActivityNamePicker = React.memo<Props>(({ ref: forwardedRef }) => {
         inputValue={currentActivityName ?? undefined}
         onInputChange={(value, actionMeta) => {
           if (actionMeta.action === 'input-change') {
-            changeInputActivityName(value)
+            changeInputActivityName(value || null)
           }
         }}
         isClearable
