@@ -55,7 +55,13 @@ export const ActivityNamePicker = React.memo<Props>(({ ref: forwardedRef }) => {
       <CreatableSelect<Option>
         isSearchable
         ref={ref}
-        isClearable={false}
+        inputValue={currentActivityName ?? undefined}
+        onInputChange={(value, actionMeta) => {
+          if (actionMeta.action === 'input-change') {
+            changeInputActivityName(value)
+          }
+        }}
+        isClearable
         options={options}
         onCreateOption={handleCreateOption}
         value={options.find(({ value }) => value === currentActivityName ) ?? null}
