@@ -4,9 +4,10 @@ const addZeroBefore = (someNumber: number): string => {
 }
 
 export const getHHMMSSfromSeconds = (timeDiff: number): string => {
-  const hours = Math.floor(timeDiff / 3600);
-  const minutes = Math.floor(timeDiff / 60 - hours)
   const seconds = timeDiff % 60;
+  const minutes = (timeDiff -  seconds) / 60 % 60;
+  const hours = Math.floor(timeDiff / 3600);
+
 
   return [hours, minutes, seconds].map(addZeroBefore).join(':');
 }
